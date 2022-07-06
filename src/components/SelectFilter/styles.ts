@@ -5,7 +5,7 @@ export const SelectWrapper = styled.select`
   align-items: center;
   justify-content: space-between;
   gap: 3rem;
-  padding: 1.124rem 2rem;
+  padding: 1.6rem 3.2rem;
   background-color: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.secundary};
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.05);
@@ -24,7 +24,7 @@ export const SelectWrapper = styled.select`
     background-color: ${(props) => props.theme.colors.primary};
     display: flex;
     white-space: pre;
-    min-height: 20px;
+    min-height: 2rem;
     padding: 0px 2px 1px;
   }
 `

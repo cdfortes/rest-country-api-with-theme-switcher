@@ -6,12 +6,20 @@ export default createGlobalStyle`
       padding: 0 ;
       box-sizing: border-box ;
     }
+    html{
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+    }
     body{
       background-color: ${(props) => props.theme.colors.background};
-      font-size: 14px ;
-      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.4rem;
       color: ${(props) => props.theme.colors.text} ;
     }
 
+    input, select, button{
+      font-family: 'Nunito Sans', sans-serif;
+
+    }
 
 `
