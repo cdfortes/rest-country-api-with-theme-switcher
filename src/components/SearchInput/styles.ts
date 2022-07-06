@@ -4,12 +4,12 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.124rem 2rem;
+  gap: 3rem;
+  padding: 1.6rem 3.2rem;
   background-color: ${(props) => props.theme.colors.primary};
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  width: 30rem;
+  width: 48rem;
 
   &:focus-within {
     outline: 1px solid ${(props) => props.theme.colors.border};
@@ -31,5 +31,10 @@ export const SearchContainer = styled.div`
       box-shadow: none;
       color: ${(props) => props.theme.colors.text};
     }
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 `
