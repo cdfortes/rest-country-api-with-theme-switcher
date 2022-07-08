@@ -1,16 +1,36 @@
-//import { useEffect, useState } from 'react'
-//import { api } from '../../services/api'
+import { useEffect, useState } from 'react'
+import { api } from '../../services/api'
 import CountryCard from '../CountryCard'
 import SearchInput from '../SearchInput'
 import SelectFilter from '../SelectFilter'
 import { Container, CountriesGrid, FilterWrapper } from './styles'
 
-const Main = () => {
-  // const [countries, setCountries] = useState([])
+interface Country {
+  name: {
+    common: string
+  }
+  alpha3Code: string
+  callingCodes: string[]
+  population: number
+  region: string
+  capital: string
+  flags: {
+    svg: string
+  }
+}
 
-  // useEffect(() => {
-  //   api.get('/').then((response) => console.log(response.data))
-  // }, [])
+const Main = () => {
+  const [countries, setCountries] = useState<Array<Country>>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await api
+        .get('/all')
+        .then((response) => setCountries(response.data))
+      return data
+    }
+    fetchData().catch(console.error)
+  }, [])
   return (
     <Container>
       <FilterWrapper>
@@ -18,12 +38,10 @@ const Main = () => {
         <SelectFilter />
       </FilterWrapper>
       <CountriesGrid>
-        <CountryCard />
-        <CountryCard />
-        <CountryCard />
-        <CountryCard />
-        <CountryCard />
-        <CountryCard />
+        {countries &&
+          countries.map((country, index) => (
+            <CountryCard key={country.name.common + index} country={country} />
+          ))}
       </CountriesGrid>
     </Container>
   )

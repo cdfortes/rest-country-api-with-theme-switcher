@@ -1,28 +1,45 @@
 import { CardContainer, FlagContainer, InfoContainer } from './styles'
 
-const CountryCard = () => {
+interface Country {
+  name: {
+    common: string
+  }
+  population: number
+  region: string
+  capital: string
+  flags: {
+    svg: string
+  }
+}
+
+interface CountryCardProps {
+  country: Country
+}
+
+const CountryCard = ({ country }: CountryCardProps) => {
+  const { name, population, region, capital, flags } = country
+  const link = name.common.toLowerCase().replace(/ /g, '-')
   return (
-    <CardContainer>
+    <CardContainer to={link}>
       <FlagContainer>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png"
-          alt="Brazil"
-        />
+        <img src={flags.svg} alt={name.common} />
       </FlagContainer>
 
       <InfoContainer>
-        <h1>Brazil</h1>
+        <h1>{name.common}</h1>
         <p>
           <strong>Population: </strong>
-          <span>200.000.000</span>
+          <span>
+            {population.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+          </span>
         </p>
         <p>
           <strong>Region: </strong>
-          <span>South America</span>
+          <span>{region}</span>
         </p>
         <p>
           <strong>Capital: </strong>
-          <span>Brasilia</span>
+          <span>{capital}</span>
         </p>
       </InfoContainer>
     </CardContainer>
