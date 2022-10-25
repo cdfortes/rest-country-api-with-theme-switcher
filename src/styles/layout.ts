@@ -42,8 +42,8 @@ export const DetailsContainer = styled.section`
   gap: 12rem;
 
   > img {
-    width: 56rem;
-    height: auto;
+    width: auto;
+    height: 40.1rem;
     object-fit: cover;
   }
 
